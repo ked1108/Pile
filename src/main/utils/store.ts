@@ -1,8 +1,10 @@
 import settings from 'electron-settings';
 import { safeStorage } from 'electron';
 
-if (!safeStorage.isEncryptionAvailable()) {
-  throw new Error('Encryption is not available on this system.');
+export function assertSafe(): void {
+  if (!safeStorage.isEncryptionAvailable()) {
+    throw new Error('Encryption is not available on this system.');
+  }
 }
 
 export async function getKey(): Promise<string | null> {

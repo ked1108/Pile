@@ -15,6 +15,7 @@ import fs from 'fs';
 import path from 'path';
 import './ipc';
 import AppUpdater from './utils/autoUpdates';
+import { assertSafe } from './utils/store';
 
 Menu.setApplicationMenu(null);
 
@@ -145,6 +146,9 @@ app
 
     setupPilesFolder();
     createWindow();
+    assertSafe();
+
+
 
     app.on('activate', () => {
       // On macOS it's common to re-create a window in the app when the
